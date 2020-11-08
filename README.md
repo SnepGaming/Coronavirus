@@ -5,7 +5,7 @@ Infectious disease Simulator
 Scopo finale del progetto:
 Realizzare un mini-gioco per dimostrare il potenziale della programmazione ad oggetti in C++. </br>
 
-Modalità di lavoro:
+Modalità di lavoro:</br>
 Il lavoro si svolge in gruppo utilizzando app di Voice chat come “Discord” il codice viene scritto su
 Visual Studio Code e la collaborazione avviene grazie all’uso dell’estensione “Live Share” che
 permette di scrivere contemporaneamente il codice, creare file aggiuntivi per il progetto il tutto

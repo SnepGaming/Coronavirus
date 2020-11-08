@@ -26,9 +26,11 @@ Fasi del lavoro:</br>
 salvate direttamente sulla piattaforma per tenere traccia della cronologia delle modifiche;
 8. Completamento dell’interfaccia grafica;
 9. Test e ottimizzazione finale.</br>
+<div></div>
 Che cos’è Infectious disease:</br>
 E un mini gioco che permette di simulare l’andamento dell’infezione da Sars-Cov-2. Il giocatore
 può decidere il numero di persone e gli attributi come “età, genere...” delle persone sulle quali
-simulare l’andamento dell’infezione. </br>E’ possibile giocare in due diverse modalità:</br>
+simulare l’andamento dell’infezione. </br>
+E’ possibile giocare in due diverse modalità:</br>
 1) Il computer simula per intero l’andamento dell’infezione;
 2) L’utente può intervenire per modificare l’esito della malattia: è possibile utilizzare upgrade o effettuare delle procedure mediche al costo di punti risorsa che si accumuleranno ogni round. La partita è persa se 2 dei parametri vitali del contagiato scendo sotto la soglia di “0”.

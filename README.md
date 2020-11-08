@@ -2,7 +2,7 @@ Progetto:
 
 Infectious disease Simulator
 
-Scopo finale del progetto:
+Scopo finale del progetto:</br>
 Realizzare un mini-gioco per dimostrare il potenziale della programmazione ad oggetti in C++. </br>
 
 Modalità di lavoro:</br>

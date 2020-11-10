@@ -1,98 +1,97 @@
 #ifndef COMPUTER_H_INCLUDED
 #define COMPUTER_H_INCLUDED
-#include "giocatore.h"
-#include <time.h>
-#include <stdlib.h>
+#include <giocatore.h>
 #include <iostream>
-using namespace std;
+#include <ghrandom.hpp>
+using Random = effolkronium::random_static;
+
 class computer_simula: public giocatore
 {
-    if (genere[x]==1)
-    {
-void simula_maschio ()
-{
-    int i;
-    if (età[x]<=35, età [x]>0)
-    {
-        if (i<=3)
-        {
-            vivo_morto [x]="Sei morto";
-        }
-        else
-        {
-            vivo_morto [x]="Sei sopravvissuto";
-        }
-    }
-    if (età[x]<=70, età [x]>35)
-    {
-           if (i<=10)
-        {
-            vivo_morto [x]="Sei morto";
-        }
-        else
-        {
-            vivo_morto [x]="Sei sopravvissuto";
-        }
-    }
-        
-    if (età [x]>70)
-    {
-           if (i<=30)
-        {
-            vivo_morto [x]="Sei morto";
-        }
-        else
-        {
-            vivo_morto [x]="Sei sopravvissuto";
-        }
-        
-    }
-}
-else 
-void simula_donna ()
-{
-    int i;
-    if (età[x]<=, età [x]>0)
-    {
-        if (i<=2)
-        {
-            vivo_morto [x]="Sei morto";
-        }
-        else
-        {
-            vivo_morto [x]="Sei sopravvissuto";
-        }
-    }
-    if (età[x]<=70, età [x]>35)
-    {
-           if (i<=8)
-        {
-            vivo_morto [x]="Sei morto";
-        }
-        else
-        {
-            vivo_morto [x]="Sei sopravvissuto";
-        }
-    }
-        
-    if (età [x]>70)
-    {
-           if (i<=25)
-        {
-            vivo_morto [x]="Sei morto";
-        }
-        else
-        {
-            vivo_morto [x]="Sei sopravvissuto";
-        }
-        
-    }
-}
-        
- }
-    
-}
 
+void simula_maschio (int pos)
+{
+    bool morto=false;
+    if (età[pos]<=40, età [pos]>0)
+    {
+        auto morto= Random::get<bool>(0.02); //randomizzatore da libreria ghrandom.hpp 2% di possibilità di morire
+        if (morto==true)
+        {
+        vivo_morto [pos]="Sei morto";
+        }
+        else
+        {
+        vivo_morto [pos]="Sei sopravvissuto";
+        }
+    }
+     if (età[pos]<=70, età [pos]>40)
+    {
+        auto morto= Random::get<bool>(0.04);
+        if (morto==true)
+        {
+        vivo_morto [pos]="Sei morto";
+        }
+        else
+        {
+        vivo_morto [pos]="Sei sopravvissuto";
+        }
+    }
+         if (età [pos]>70)
+    {
+        auto morto = Random::get<bool>(0.32);
+        if (morto==true)
+        {
+        vivo_morto [pos]="Sei morto";
+        }
+        else
+        {
+        vivo_morto [pos]="Sei sopravvissuto";
+        }
+    }
+        
+
+}
+void simula_femmina (int pos)
+{
+    bool morto=false;
+    if (età[pos]<=40, età [pos]>0)
+    {
+        auto morto = Random::get<bool>(0.01); //randomizzatore da libreria ghrandom.hpp 1% di possibilità di morire
+        if (morto==true)
+        {
+        vivo_morto [pos]="Sei morto";
+        }
+        else
+        {
+        vivo_morto [pos]="Sei sopravvissuto";
+        }
+    }
+     if (età[pos]<=70, età [pos]>40)
+    {
+        auto morto = Random::get<bool>(0.02);
+        if (morto==true)
+        {
+        vivo_morto [pos]="Sei morto";
+        }
+        else
+        {
+        vivo_morto [pos]="Sei sopravvissuto";
+        }
+    }
+         if (età [pos]>70)
+    {
+        auto morto = Random::get<bool>(0.3);
+        if (morto==true)
+        {
+        vivo_morto [pos]="Sei morto";
+        }
+        else
+        {
+        vivo_morto [pos]="Sei sopravvissuto";
+        }
+    }
+        
+        
+}
 };
 
 #endif //COMPUTER_H_INCLUDED

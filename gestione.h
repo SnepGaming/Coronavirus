@@ -6,11 +6,12 @@
 class controllo 
 {
     public:
-    void selezione(int sel, int genere[], int pos)
-    {
-if (sel==1)// 1 gioca pc
+void selezione(int sel, int genere[], int pos)
 {
 computer_simula sm;
+if (sel==1)// 1 gioca pc
+{
+
 if (genere[pos]==1)
 {
 sm.simula_maschio(pos);    

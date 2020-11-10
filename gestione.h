@@ -2,7 +2,18 @@
 #define GESTIONE_H_INCLUDED
 #include "computer.h"
 #include "giocatore.h"
-
+class stato_vita
+{
+    public:
+    void set_morto (int pos)
+    { 
+        vivo_morto [pos]="Sei morto";
+    }
+    void set_vivo (int pos)
+    { 
+        vivo_morto [pos]="Sei sopravvissuto";
+    }    
+}
 class controllo 
 {
     public:

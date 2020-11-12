@@ -10,7 +10,6 @@
 using namespace std;
 
 int main ()
-<<<<<<< SnepGaming/issue1
 {
     HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -30,9 +29,5 @@ cn.selezione(sel,1);
 cv.visualizza_vivo_morto(n);
 
 
-=======
-{   efe
-    int n;
->>>>>>> master
     return 0; //merge
 }

@@ -2,8 +2,7 @@
 #define COMPUTER_H_INCLUDED
 #include "giocatore.h"
 #include <iostream>
-//#include "ghrandom.h"
-#include "random.hpp"
+#include "librerie/random.hpp"
 #include "gestione.h"
 using Random = effolkronium::random_static;
 using namespace std;
@@ -14,10 +13,11 @@ class simulazione: public giocatore
 public: //da mettere protected
 void simula_maschio (int pos)
 {
-    int ceta=eta[pos];
+    cout<<"prova"<<endl;
     bool morto=false;
-    if (ceta<=40 || ceta>0)
+    if ((get_eta(pos)<=40) && (get_eta(pos)>0))
     {
+         
         auto morto= Random::get<bool>(0.02); //randomizzatore da libreria random.hpp 2% di possibilità di morire
         if (morto==true)
         {
@@ -28,7 +28,7 @@ void simula_maschio (int pos)
         sv.set_vivo(pos);
         }
     }
-     if (ceta<=70 || ceta>40)
+     if ((get_eta(pos)<=70) && (get_eta(pos)>40))
     {
         auto morto= Random::get<bool>(0.04);
         if (morto==true)
@@ -40,7 +40,7 @@ void simula_maschio (int pos)
         sv.set_vivo(pos);
         }
     }
-         if (ceta>70)
+         if (get_eta(pos)>70)
     {
         auto morto = Random::get<bool>(0.32);
         if (morto==true)
@@ -57,11 +57,12 @@ void simula_maschio (int pos)
 }
 void simula_femmina (int pos)
 {
-    int ceta=eta[pos];
+    
     bool morto=false;
-    if (ceta<=40 || ceta>0)
+    if ((get_eta(pos)<=40) && (get_eta(pos)>0))
     {
-        auto morto = Random::get<bool>(0.01); //randomizzatore da libreria ghrandom.h 1% di possibilità di morire
+       
+        auto morto = Random::get<bool>(0.01); //randomizzatore da libreria random.hpp 1% di possibilità di morire
         if (morto==true)
         {
         sv.set_morto(pos);
@@ -71,7 +72,7 @@ void simula_femmina (int pos)
         sv.set_vivo(pos);
         }
     }
-     if (ceta<=70 || ceta>40)
+     if ((get_eta(pos)<=70) && (get_eta(pos)>40))
     {
         auto morto = Random::get<bool>(0.02);
         if (morto==true)
@@ -83,7 +84,7 @@ void simula_femmina (int pos)
         sv.set_vivo(pos);
         }
     }
-         if (ceta>70)
+         if (get_eta(pos)>70)
     {
         auto morto = Random::get<bool>(0.3);
         if (morto==true)

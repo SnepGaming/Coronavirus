@@ -37,7 +37,9 @@ int get_parametri (int pos)
 };
 class algoritmi
 {
+    private:
     utente u;
+    public:
 int media_vita ()
 {
   int media=0;
@@ -49,6 +51,7 @@ for (int i=0; i<10; i++)
     u.set_media_vita(media);
 }
 };
+
 class vita: public utente
 {
     private:
@@ -124,12 +127,13 @@ void game ()
 {
 difine_m_r(0);
 int tot=0;
+int pr;
 while (tot<g.get_n())
 {
 
 for (int i=0 ;i<parametro_random(); i++)
 {
-int pr=parametro_random();
+pr=parametro_random();
 int val= get_random(get_min_r(), get_max_r());
 set_parametri(val=get_parametri(pr)-val, pr);
 

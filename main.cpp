@@ -23,7 +23,7 @@ cout<<"n"<<endl;
 cin>>n;
 cv.load(n, nc, m_eta, m_genere);
 cv.visualizza_eta(n);
-int sel;//da implementare in gestione.h
+int sel;
 cout<<"sel"<<endl;
 cin>>sel;
 //controllo cn;

@@ -5,7 +5,7 @@
 #include "librerie/random.hpp"
 #include "gestione.h"
 #include "giocatore.h"
-using Random = effolkronium::random_static;
+using Random = effolkronium::random_static; //da random.hpp
 class utente
 {
 private:

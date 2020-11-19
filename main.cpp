@@ -13,7 +13,6 @@ int main ()
     HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, 10);
-    
 int m_eta, m_genere, n;
 string nc;
 string c;
@@ -31,5 +30,7 @@ simulazione sn;
 //cn.selezione(sel,1);
 sn.simula_maschio(1);
 cv.visualizza_vivo_morto(n);
+
+
     return 0; //merge
 }

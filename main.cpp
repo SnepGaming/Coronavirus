@@ -1,14 +1,16 @@
 #include <iostream>
-#include "giocatore.h"
-#include "computer.h"
-#include "gestione.h"
+#include "giocatore.hpp"
+#include "computer.hpp"
+#include "gestione.hpp"
 #include "librerie/random.hpp"
 #include <stdlib.h>
-#include <windows.h> 
+#include <windows.h>
 
-using namespace std;
+//main
 
-int main ()
+using namespace std; 
+
+int main () 
 {
     HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -28,7 +30,7 @@ cin>>sel;
 //controllo cn;
 simulazione sn;
 //cn.selezione(sel,1);
-sn.simula_maschio(1);
+sn.simula_maschio(0);
 cv.visualizza_vivo_morto(n);
 
 

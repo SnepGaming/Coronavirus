@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <windows.h>
 
+//main
+
 using namespace std; 
 
 int main () 

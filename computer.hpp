@@ -8,6 +8,9 @@
 #include <string>
 using Random = effolkronium::random_static;
 using namespace std;
+
+//computer
+
 stato_vita sv;
 
 class simulazione: public giocatore

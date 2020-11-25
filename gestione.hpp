@@ -6,6 +6,8 @@
 #include <string>
 using namespace std;
 
+//gestione
+
 /*class stato_vita
 {
     private:

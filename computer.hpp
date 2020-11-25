@@ -1,9 +1,11 @@
-#ifndef COMPUTER_H_INCLUDED
-#define COMPUTER_H_INCLUDED
-#include "giocatore.h"
+
+#ifndef COMPUTER_HPP_INCLUDED
+#define COMPUTER_HPP_INCLUDED
+#include "giocatore.hpp"
 #include <iostream>
 #include "librerie/random.hpp"
-#include "gestione.h"
+#include "gestione.hpp"
+#include <string>
 using Random = effolkronium::random_static;
 using namespace std;
 stato_vita sv;
@@ -14,7 +16,7 @@ public: //da mettere protected
 void simula_maschio (int pos)
 {
     cout<<"prova"<<endl;
-    bool morto=false;
+    bool morto=false; 
     if ((get_eta(pos)<=40) && (get_eta(pos)>0))
     {
          
@@ -133,4 +135,4 @@ cout<<"Selezione invalida"<<endl;
 }
 };
 
-#endif //COMPUTER_H_INCLUDED
+#endif //COMPUTER_HPP_INCLUDED

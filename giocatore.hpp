@@ -1,18 +1,19 @@
-#ifndef GIOCATORE_H_INCLUDED
-#define GIOCATORE_H_INCLUDED
+#ifndef GIOCATORE_HPP_INCLUDED
+#define GIOCATORE_HPP_INCLUDED
 #include <iostream>
 #include <string>
-using namespace std;
+using namespace std; 
 class giocatore
 {
     protected:
-    string Nome_Cognome [30];
+    string Nome_Cognome [30]; 
     int eta[30];
     int genere [30];
     int n;
     int risorse=0;
+    bool vivo_morto [30];
     public:
-    string vivo_morto [30];
+    
     void set_giocatore(string nc,int e,int g,int i) 
     {
         Nome_Cognome[i]=nc; 
@@ -22,7 +23,8 @@ class giocatore
     string get_Nome_Cognome(int i) {return Nome_Cognome[i];};
     int get_eta(int i) {return eta[i];};
     int get_genere(int i) {return genere[i];};
-    string get_vivo_morto(int i) {return vivo_morto[i];}
+    bool get_vivo_morto(int i) {return vivo_morto[i];}
+    void set_vivo_morto(bool stato, int pos) {vivo_morto[pos]=stato;}
     int get_n(){return n;}
     void set_risorse(int ris)
     {
@@ -64,10 +66,35 @@ class lv_giocatore: public giocatore
     {
         for(int i=0; i<n; i++)
         {
-            cout<<"Stato del paziente "<<i+1<<" "<<get_vivo_morto(i)<<endl;
+            if (get_vivo_morto(i)==true)
+            {
+                 cout<<"Stato del paziente "<<i+1<<" Sei Vivo :)"<<endl;
+            }
+            else
+            {
+                cout<<"Stato del paziente "<<i+1<<" Sei Morto :("<<endl;
+            }
+            
+           
         }
     }
 };
 
+class stato_vita
+{
+    private:
+    giocatore gg;
+    public:
+    void set_morto (int pos)
+    { 
+        cout<<"debug"<<endl;
+        gg.set_vivo_morto(false,pos);
+    }
+    void set_vivo (int pos)
+    {   cout<<"debug2"<<endl;
+        gg.set_vivo_morto(true,pos);
+    }    
+};
 
-#endif //GIOCATORE_H_INCLUDED
+
+#endif //GIOCATORE_HPP_INCLUDED

@@ -14,10 +14,15 @@ int main ()
     HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, 10);
+
     
 int m_eta, m_genere, m_n, m_sel;
+
+int m_eta, m_genere, n;
+
 string nc;
 lv_giocatore cv;
+
 controllo menu;
 
 cout<<"Quante persone vuoi che si infettino da SARS-CoV-2?"<<endl;
@@ -31,6 +36,8 @@ for (int i=0; i<m_n; i++)
     cv.visualizza_vivo_morto(m_n, i);
     
 }
+
+
 
 
     return 0; //merge

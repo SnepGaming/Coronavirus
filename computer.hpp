@@ -1,24 +1,22 @@
+#pragma once
 
-#ifndef COMPUTER_HPP_INCLUDED
-#define COMPUTER_HPP_INCLUDED
-#include "giocatore.hpp"
 #include <iostream>
+#include "gamer.hpp"
+#include "utente.hpp"
 #include "librerie/random.hpp"
-#include "gestione.hpp"
-#include <string>
+
+
 using Random = effolkronium::random_static;
 using namespace std;
 
-//computer
 
-stato_vita sv;
-
-class simulazione: public giocatore
+class simulazione:  giocatore
 {
-public: //da mettere protected
+private:
+stato_vita sv;
+public: 
 void simula_maschio (int pos)
 {
-    cout<<"prova"<<endl;
     bool morto=false; 
     if ((get_eta(pos)<=40) && (get_eta(pos)>0))
     {
@@ -106,26 +104,28 @@ void simula_femmina (int pos)
 }
 };
 
-class controllo: simulazione
+class controllo
 {
     public:
     simulazione sim;
+    gioco gm;
+    giocatore gio;
 void selezione(int sel, int pos)
 {
 switch (sel)
 {
 case (1):
-if (get_genere(pos)==1)
+if (gio.get_genere(pos)==1)
 {
 sim.simula_maschio(pos);    
 }
-if (get_genere(pos)==2)
+if (gio.get_genere(pos)==2)
 {
 sim.simula_femmina(pos);    
 }
     break;
 case (2):
-cout<<"emy"<<endl;
+gm.game();
     break;
 
 default:
@@ -138,4 +138,3 @@ cout<<"Selezione invalida"<<endl;
 }
 };
 
-#endif //COMPUTER_HPP_INCLUDED

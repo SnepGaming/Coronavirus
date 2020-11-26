@@ -1,12 +1,11 @@
 #include <iostream>
-#include "giocatore.hpp"
+#include "gamer.hpp"
 #include "computer.hpp"
-#include "gestione.hpp"
-#include "librerie/random.hpp"
+#include "utente.hpp"
 #include <stdlib.h>
 #include <windows.h>
 
-//main
+
 
 using namespace std; 
 
@@ -15,23 +14,30 @@ int main ()
     HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, 10);
+
+    
+int m_eta, m_genere, m_n, m_sel;
+
 int m_eta, m_genere, n;
+
 string nc;
-string c;
-getline(cin,c);
 lv_giocatore cv;
-cout<<"n"<<endl;
-cin>>n;
-cv.load(n, nc, m_eta, m_genere);
-cv.visualizza_eta(n);
-int sel;
-cout<<"sel"<<endl;
-cin>>sel;
-//controllo cn;
-simulazione sn;
-//cn.selezione(sel,1);
-sn.simula_maschio(0);
-cv.visualizza_vivo_morto(n);
+
+controllo menu;
+
+cout<<"Quante persone vuoi che si infettino da SARS-CoV-2?"<<endl;
+cin>>m_n;
+cv.load(m_n, nc, m_eta, m_genere);
+for (int i=0; i<m_n; i++)
+{
+    cout<<"Seleziona 1 per simulare o 2 per giocare."<<endl;
+    cin>>m_sel;
+    menu.selezione(m_sel,i);
+    cv.visualizza_vivo_morto(m_n, i);
+    
+}
+
+
 
 
     return 0; //merge

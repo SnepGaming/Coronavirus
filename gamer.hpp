@@ -1,10 +1,10 @@
-#ifndef GIOCATORE_HPP_INCLUDED
-#define GIOCATORE_HPP_INCLUDED
+#pragma once
 #include <iostream>
 #include <string>
+
 using namespace std; 
 
-//giocatore
+
 
 class giocatore
 {
@@ -29,18 +29,13 @@ class giocatore
     bool get_vivo_morto(int i) {return vivo_morto[i];}
     void set_vivo_morto(bool stato, int pos) {vivo_morto[pos]=stato;}
     int get_n(){return n;}
-    void set_risorse(int ris)
-    {
-        risorse=ris;
-    }
-    int get_risorse(){return risorse;}
- 
 
 
 };
 
 class lv_giocatore: public giocatore
-{  public:
+{  
+    public:
    
     void load (int n, string nc,int e,int g)
     {
@@ -65,10 +60,9 @@ class lv_giocatore: public giocatore
         }
 
     }
-    void visualizza_vivo_morto (int n)
+    void visualizza_vivo_morto (int n, int i)
     {
-        for(int i=0; i<n; i++)
-        {
+       
             if (get_vivo_morto(i)==true)
             {
                  cout<<"Stato del paziente "<<i+1<<" Sei Vivo :)"<<endl;
@@ -79,8 +73,15 @@ class lv_giocatore: public giocatore
             }
             
            
-        }
+        
     }
+   /* void visualizza_parametri (int pos)
+    {  
+        for (int i=0; i<5; i++)
+        {
+            cout<<ut.get_nome_parametri(pos)<<":  "<<ut.get_parametri(pos)<<endl;
+        }
+    }*/
 };
 
 class stato_vita
@@ -90,14 +91,13 @@ class stato_vita
     public:
     void set_morto (int pos)
     { 
-        cout<<"debug"<<endl;
+      
         gg.set_vivo_morto(false,pos);
     }
     void set_vivo (int pos)
-    {   cout<<"debug2"<<endl;
+    {  
         gg.set_vivo_morto(true,pos);
     }    
 };
 
 
-#endif //GIOCATORE_HPP_INCLUDED

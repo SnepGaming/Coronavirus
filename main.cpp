@@ -1,3 +1,8 @@
+/*
+Gruppo formato da: Mario Cosenza, Emilia Ferraro, Francesco Lepre, Martina Palladino.
+
+*/
+
 #include <iostream>
 #include "gamer.hpp"
 #include "computer.hpp"
@@ -25,7 +30,7 @@ cin>>m_n;
 cv.load(m_n, nc, m_eta, m_genere);
 for (int i=0; i<m_n; i++)
 {
-    cout<<"Seleziona 1 per simulare o 2 per giocare."<<endl;
+    cout<<"Seleziona 1 per simulare o 2 per giocare (In pre-alpha)."<<endl;
     cin>>m_sel;
     menu.selezione(m_sel,i);
     cv.visualizza_vivo_morto(m_n, i);
@@ -33,5 +38,6 @@ for (int i=0; i<m_n; i++)
 }
 
 
-    return 0; //merge
+    return 0;
 }
+

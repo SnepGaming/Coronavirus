@@ -3,6 +3,8 @@
 #include "librerie/random.hpp"
 #include <windows.h>
 #include "gamer.hpp"
+#include <stdlib.h>
+ #include <conio.h>
 using Random = effolkronium::random_static; //da libreria random.hpp
 using namespace std;
 
@@ -13,19 +15,19 @@ using namespace std;
 class utente
 {
 private:
-    uint32_t media_vita;
-    uint32_t parametri[5]={100,100,100,100,100};
+    int media_vita;
+    int parametri[5]={100,100,100,100,100};
     string const nome_parametri[5]{"Sistema nervoso", "Sistema circolatorio","Sistema Respiratorio", "Sistema scheletrico","Sistema Immunitario"};
     string const upgrade[6]{"TAC","Analgesici", "Farmaci Immunostimolanti", "Ossigeno","Corticosteroidi", "Vaccino"};
     int const upgrade_value [6]= {10,3,8,15,5,50};
-    int punti=5;//da mettere 0
+    int punti=50;//da mettere 0
 
 public:
 void set_media_vita (int mv)
 {
     mv=media_vita;
 }
-uint32_t get_media_vita ()
+int get_media_vita ()
 {
     return media_vita;
 }
@@ -33,13 +35,13 @@ void set_parametri (int pp, int pos)
 {
     pp=parametri[pos];
 }
-uint32_t get_parametri (int pos)
+int get_parametri (int pos)
 {
     return parametri[pos];
 }
 void set_punti (int pp)
 {
-    pp=punti;
+    punti=pp;
 }
 int get_punti ()
 {
@@ -68,17 +70,19 @@ string get_upgrade (int pos)
 class algoritmi
 {
     private:
-    utente u;
+    utente u; 
+    int media;
     public:
-void media_vita ()
-{
-  int media=0;
-for (int i=0; i<10; i++)
-{
+int media_vita ()
+{ 
+    media=0;
+for (int i=0; i<5; i++)
+{ 
     media=media+u.get_parametri(i);
 }
     media=media/5;
     u.set_media_vita(media);
+    return media;
 }
 };
 
@@ -89,7 +93,6 @@ class vita: public utente
     int min_r=1;
     algoritmi a;
     stato_vita st;
-    int val;
     public:
     
 int get_max_r()
@@ -102,48 +105,55 @@ int get_min_r ()
 }
     int parametro_random ()
     {
-     auto val=Random::get(0, 9);
+     int val=Random::get(0, 9);
      return val;
        
     }
-    int get_random (int min_r,int max_r)
+    int get_random ()
     {
-     auto val = Random::get(min_r, max_r);
+     int val = Random::get(min_r, max_r);
      return val;   
     }
+    int random (int min, int max)
+    {
+       int val = Random::get(min, max);
+       return val; 
+    }
+    
     void difine_m_r(int pos)
     {
-        if ((get_media_vita()<80)&&(get_media_vita()>=50))
+        if ((a.media_vita()<80)&&(a.media_vita()>=50))
         {
-            min_r=get_random(get_random(1,max_r), max_r);
-            max_r=get_random(min_r, max_r+15);
+           min_r=random (1, 8);
+           max_r=random (8, 15); 
         }
-        if ((get_media_vita()<50)&&(get_media_vita()>=40))
+        if ((a.media_vita()<50)&&(a.media_vita()>=40))
         {
-            min_r=get_random(get_random(2,max_r), max_r);
-            max_r=get_random(min_r, max_r+5);
+            min_r=random (1, 4);
+            max_r=random (5, 10); 
+            
         }
-        if ((get_media_vita()<40)&&(get_media_vita()>=30))
+        if ((a.media_vita()<40)&&(a.media_vita()>=30))
         {
-            min_r=get_random(get_random(1,max_r), max_r);
-            max_r=get_random(min_r, max_r+5);
+            min_r=random (1, 3);
+            max_r=random (4, 8); 
         }
-        if ((get_media_vita()<30)&&(get_media_vita()>=20))
+        if ((a.media_vita()<30)&&(a.media_vita()>=20))
         {
-            min_r=get_random(get_random(1,max_r), max_r);
-            max_r=get_random(min_r, max_r+3);
+            min_r=random (1, 5);
+            max_r=random (6, 10); 
         }
-        if ((get_media_vita()<20)&&(get_media_vita()>=10))
+        if ((a.media_vita()<20)&&(a.media_vita()>=10))
         {
-            min_r=get_random(get_random(1,max_r), max_r);
-            max_r=get_random(min_r, max_r);
+            min_r=random (1, 3);
+            max_r=random (4,6); 
         }
-        if ((get_media_vita()<10)&&(get_media_vita()>=5))
+        if ((a.media_vita()<10)&&(a.media_vita()>=5))
         {
-            min_r=get_random(get_random(-10,1), min_r);
-            max_r=get_random(min_r, 5);
+            min_r=random (1, 5);
+            max_r=random (6, 9); 
         }
-        if (get_media_vita()<5)
+        if (a.media_vita()<5)
         {
             //stato_vita st; riga 84
             st.set_morto(pos);
@@ -193,6 +203,7 @@ switch (up)
     case (2): //analgesici
     if (us.get_punti()>=us.get_upgrade_value(1)) 
     {
+        cout<<"debug"<<endl;
     us.set_punti(us.get_punti()-us.get_upgrade_value(1));
     if ((us.get_parametri(0)<=95) && (us.get_parametri(3)<=95))  //analgesici
     {
@@ -259,8 +270,8 @@ switch (up)
     us.set_punti(us.get_punti()-us.get_upgrade_value(4));
     if ((us.get_parametri(1)<=93) && (us.get_parametri(4)<=93))
     {
-    us.set_parametri(us.get_parametri(2)+7,1); //circolatorio
-    us.set_parametri(us.get_parametri(2)+7,4); //immunitario
+    us.set_parametri(us.get_parametri(1)+7,1); //circolatorio
+    us.set_parametri(us.get_parametri(4)+7,4); //immunitario
     }
     else
     {
@@ -271,6 +282,7 @@ switch (up)
     else
     {
         cout<<"\t Non hai abbastanza punti per questo upgrade, ritenta il prossimo round!!"<<endl;
+       
     }
     break;
     
@@ -283,20 +295,27 @@ switch (up)
     else
     {
       cout<<"\t Questo round non potrai usare upgrade!" <<endl; 
+        cout << "Premi Enter per continuare"<<endl;
+     getch();
+     
     }
     case (10): //break
     break;  
    
-
-    break;
 default:
 cout<<"Input errato"<<endl;
+  cout << "Premi Enter per continuare"<<endl;
+  getch();
+
 break;
 }
 }
 else
 {
-   cout<<"Non hai...i punti"<<endl;
+cout<<"Non hai...i punti"<<endl;;
+  cout << "Premi Enter per continuare"<<endl;
+  getch();
+
 }
 
 }
@@ -312,30 +331,33 @@ giocatore gt;
 vita hp;
 utente ut;
 gestione gh;
+algoritmi al;
 public:
 
-void game ()
+void game (int pos)
 {
-hp.difine_m_r(0);
+hp.difine_m_r(pos);
 int tot=0;
 int pr;
-while (tot<gt.get_n())
+int p_random;
+while ((al.media_vita()>5)&&(gt.get_vivo_morto(pos)!=false))
 {
+system("CLS");
 ut.visualizza_parametri();
-ut.set_punti(ut.get_punti()+hp.get_random(5,7));  //da mettere  da 0 a 7 
-gh.upgrade(tot);
+p_random=ut.get_punti()+hp.random(1,7);
+ut.set_punti(p_random); 
+gh.upgrade(pos);
 for (int i=0 ;i<hp.parametro_random(); i++)
 {
+
 pr=hp.parametro_random();
-int val= hp.get_random(hp.get_min_r(), hp.get_max_r());
+int val= hp.random(hp.get_min_r(), hp.get_max_r());
 ut.set_parametri(val=ut.get_parametri(pr)-val, pr);
 
 }
-hp.difine_m_r(tot);
+hp.difine_m_r(pos);
 
-
-
-tot++;
+al.media_vita();
 }
 }
 

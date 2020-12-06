@@ -14,7 +14,7 @@ class giocatore
     int genere [30];
     int n;
     int risorse=0;
-    bool vivo_morto [30];
+    bool vivo_morto[30];
     public:
     
     void set_giocatore(string nc,int e,int g,int i) 
@@ -28,7 +28,7 @@ class giocatore
     int get_genere(int i) {return genere[i];};
     bool get_vivo_morto(int i) {return vivo_morto[i];}
     void set_vivo_morto(bool stato, int pos) {vivo_morto[pos]=stato;}
-    int get_n(){return n;}
+    int get_n() {return n;}
 
 
 };
@@ -47,7 +47,17 @@ class lv_giocatore: public giocatore
             cin>>e;
             cout<<"Inserisci il genere del paziente "<<i+1<< " 1=<<maschio>> 2=<<femmina>>"<<endl;
             cin>>g;
-            set_giocatore (nc,e,g,i);
+            if ((g==1) ||( g==2))
+            {
+             set_giocatore (nc,e,g,i);   
+            }
+            else
+            {
+                cout<<"Genere non riconosciuto"<<endl;
+                load(n,nc,e,g);
+                
+            }
+            
         }
     }
 
@@ -75,13 +85,7 @@ class lv_giocatore: public giocatore
            
         
     }
-   /* void visualizza_parametri (int pos)
-    {  
-        for (int i=0; i<5; i++)
-        {
-            cout<<ut.get_nome_parametri(pos)<<":  "<<ut.get_parametri(pos)<<endl;
-        }
-    }*/
+
 };
 
 class stato_vita

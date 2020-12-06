@@ -1,6 +1,6 @@
-Progetto:
 
-Infectious disease Simulator
+<h1>
+Infectious disease Simulator</h1>
 
 Scopo finale del progetto:</br>
 Realizzare un mini-gioco per dimostrare il potenziale della programmazione ad oggetti in C++. </br>

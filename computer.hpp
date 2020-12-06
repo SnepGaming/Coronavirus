@@ -125,7 +125,7 @@ sim.simula_femmina(pos);
 }
     break;
 case (2):
-gm.game();
+gm.game(pos);
     break;
 
 default:

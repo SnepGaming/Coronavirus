@@ -4,7 +4,7 @@
 #include <windows.h>
 #include "gamer.hpp"
 #include <stdlib.h>
- #include <conio.h>
+#include <conio.h>
 using Random = effolkronium::random_static; //da libreria random.hpp
 using namespace std;
 
@@ -20,12 +20,12 @@ private:
     string const nome_parametri[5]{"Sistema nervoso", "Sistema circolatorio","Sistema Respiratorio", "Sistema scheletrico","Sistema Immunitario"};
     string const upgrade[6]{"TAC","Analgesici", "Farmaci Immunostimolanti", "Ossigeno","Corticosteroidi", "Vaccino"};
     int const upgrade_value [6]= {10,3,8,15,5,50};
-    int punti=50;//da mettere 0
+    int punti=0;//da mettere 0
 
 public:
 void set_media_vita (int mv)
 {
-    mv=media_vita;
+    media_vita=mv;
 }
 int get_media_vita ()
 {
@@ -33,15 +33,15 @@ int get_media_vita ()
 }
 void set_parametri (int pp, int pos)
 {
-    pp=parametri[pos];
+   parametri[pos]=pp;
 }
 int get_parametri (int pos)
 {
     return parametri[pos];
 }
-void set_punti (int pp)
+void set_punti (int pup)
 {
-    punti=pp;
+    punti=pup;
 }
 int get_punti ()
 {
@@ -65,6 +65,11 @@ string get_upgrade (int pos)
         {
             cout<<get_nome_parametri(i)<<":  "<<get_parametri(i)<<endl;
         }
+    }
+    void continua ()
+    {
+        cout << "Premi Enter per continuare"<<endl;
+        getch();
     }
 };
 class algoritmi
@@ -103,20 +108,20 @@ int get_min_r ()
 {
     return min_r;
 }
-    int parametro_random ()
+    auto parametro_random ()
     {
-     int val=Random::get(0, 9);
+     auto val=Random::get(0, 9);
      return val;
        
     }
-    int get_random ()
+    auto get_random ()
     {
-     int val = Random::get(min_r, max_r);
+     auto val = Random::get(min_r, max_r);
      return val;   
     }
-    int random (int min, int max)
+    auto random (int min, int max)
     {
-       int val = Random::get(min, max);
+       auto val = Random::get(min, max);
        return val; 
     }
     
@@ -186,7 +191,7 @@ switch (up)
     us.set_punti(us.get_punti()-us.get_upgrade_value(0));
     if (us.get_parametri(2)<=85) 
     {
-    us.set_parametri(us.get_parametri(2)+15,2);//respiratorio
+    us.set_parametri((us.get_parametri(2)+15),2);//respiratorio
     }
     else
     {
@@ -196,6 +201,7 @@ switch (up)
     else
     {
         cout<<"\t Non hai abbastanza punti per questo upgrade, ritenta il prossimo round!!"<<endl;
+        us.continua();
     }
     
     break;
@@ -203,7 +209,6 @@ switch (up)
     case (2): //analgesici
     if (us.get_punti()>=us.get_upgrade_value(1)) 
     {
-        cout<<"debug"<<endl;
     us.set_punti(us.get_punti()-us.get_upgrade_value(1));
     if ((us.get_parametri(0)<=95) && (us.get_parametri(3)<=95))  //analgesici
     {
@@ -219,6 +224,7 @@ switch (up)
     else
     {
         cout<<"\t Non hai abbastanza punti per questo upgrade, ritenta il prossimo round!!"<<endl;
+        us.continua();
     }
 
     break;
@@ -239,6 +245,7 @@ switch (up)
     else
     {
         cout<<"\t Non hai abbastanza punti per questo upgrade, ritenta il prossimo round!!"<<endl;
+        us.continua();
     }
     
     break;
@@ -261,6 +268,7 @@ switch (up)
     else
     {
         cout<<"\t Non hai abbastanza punti per questo upgrade, ritenta il prossimo round!!"<<endl;
+        us.continua();
     }
     break;
     
@@ -282,7 +290,7 @@ switch (up)
     else
     {
         cout<<"\t Non hai abbastanza punti per questo upgrade, ritenta il prossimo round!!"<<endl;
-       
+       us.continua();
     }
     break;
     
@@ -295,8 +303,7 @@ switch (up)
     else
     {
       cout<<"\t Questo round non potrai usare upgrade!" <<endl; 
-        cout << "Premi Enter per continuare"<<endl;
-     getch();
+       us.continua();
      
     }
     case (10): //break
@@ -304,8 +311,7 @@ switch (up)
    
 default:
 cout<<"Input errato"<<endl;
-  cout << "Premi Enter per continuare"<<endl;
-  getch();
+us.continua();
 
 break;
 }
@@ -313,8 +319,7 @@ break;
 else
 {
 cout<<"Non hai...i punti"<<endl;;
-  cout << "Premi Enter per continuare"<<endl;
-  getch();
+us.continua();
 
 }
 
@@ -340,18 +345,19 @@ hp.difine_m_r(pos);
 int tot=0;
 int pr;
 int p_random;
+int val;
 while ((al.media_vita()>5)&&(gt.get_vivo_morto(pos)!=false))
 {
 system("CLS");
 ut.visualizza_parametri();
-p_random=ut.get_punti()+hp.random(1,7);
+p_random=(ut.get_punti()+hp.random(1,7));
 ut.set_punti(p_random); 
 gh.upgrade(pos);
 for (int i=0 ;i<hp.parametro_random(); i++)
 {
 
 pr=hp.parametro_random();
-int val= hp.random(hp.get_min_r(), hp.get_max_r());
+val=hp.random(hp.get_min_r(), hp.get_max_r());
 ut.set_parametri(val=ut.get_parametri(pr)-val, pr);
 
 }

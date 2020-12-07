@@ -1,5 +1,5 @@
 
-<h1 style="#731768;">
+<h1>
 Infectious disease Simulator</h1>
 
 <h2>Scopo finale del progetto:</h2>
